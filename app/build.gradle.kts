@@ -1,25 +1,24 @@
-import org.gradle.kotlin.dsl.apply
-import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.kotlin
-import org.gradle.kotlin.dsl.*
-import org.jetbrains.kotlin.config.KotlinCompilerVersion
-
 plugins {
     id ("com.android.application")
     id ("kotlin-android")
+    id ("kotlin-kapt")
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     defaultConfig {
         applicationId = "gs.prajwal"
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 31
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    dataBinding {
+        isEnabled = true
     }
 
     buildTypes {
@@ -38,13 +37,13 @@ android {
 }
 
 dependencies {
-    val lifecycle_version = "2.5.0-alpha02"
+    val lifecycleVersion = "2.5.0-alpha02"
 
     implementation ("androidx.appcompat:appcompat:1.4.1")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.3")
-    implementation("androidx.core:core-ktx:1.0.2")
+    implementation("androidx.core:core-ktx:1.7.0")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
 
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.1")
